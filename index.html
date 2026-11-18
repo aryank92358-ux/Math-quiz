@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MATH MASTER EXAM - CLASS 7</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#4a0080 0%,#1a0033 60%,#0d001a 100%);color:white;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;display:flex;flex-direction:column;align-items:center}
+header{width:100%;background:linear-gradient(180deg,rgba(255,0,255,.2),rgba(0,0,0,.4));padding:15px;text-align:center;border-bottom:2px solid #ff007f;box-shadow:0 0 15px rgba(255,0,127,.4)}
+header h1{margin:0;color:#00ffff;font-size:26px;text-shadow:0 0 8px #00ffff}
+header p{margin:5px 0 0;color:#ffffff;font-size:15px;font-weight:bold;text-shadow:0 0 6px rgba(255,255,255,0.6)}
+.sub-edit{color:#f0e6ff;font-size:13px;opacity:0.9;font-weight:normal;text-shadow:0 0 5px rgba(255,255,255,0.5);display:block;margin-top:3px;}
+.container{width:100%;max-width:480px;margin:auto;padding:15px}.card{background:rgba(35,10,60,.9);border:2px solid #9933ff;border-radius:20px;padding:22px;box-shadow:0 0 25px rgba(153,51,255,.3),inset 0 0 15px rgba(255,255,255,.05);backdrop-filter:blur(5px)}
+.center{text-align:center}.hidden{display:none!important}
+button{border:0;border-radius:30px;padding:14px 20px;font-size:16px;font-weight:bold;cursor:pointer;font-family:inherit;text-transform:uppercase;letter-spacing:1px;transition:all .2s;width:100%;margin-top:10px}
+.start{background:linear-gradient(180deg,#ff007f,#cc0066);color:#fff;border:2px solid #ff66b2;box-shadow:0 0 12px rgba(255,0,127,.6)}
+.check-btn{background:linear-gradient(180deg,#00d9ff,#0088cc);color:#0d001a;border:2px solid #66e0ff;box-shadow:0 0 12px rgba(0,217,255,.6)}
+.next{background:linear-gradient(180deg,#00ff66,#00b347);color:#062d28;border:2px solid #66ffb2;box-shadow:0 0 12px rgba(0,255,102,.6)}
+.check-btn:disabled,.next:disabled{background:#3d2a54!important;border-color:#594178!important;color:#8871a3!important;box-shadow:none!important;cursor:not-allowed}
+.start:hover,.check-btn:hover:not(:disabled),.next:hover:not(:disabled){transform:translateY(-2px);filter:brightness(1.1)}
+.info{display:flex;gap:10px;margin-bottom:15px}.info div{flex:1;text-align:center;background:linear-gradient(180deg,#3d0e66,#250642);padding:10px 5px;border-radius:15px;font-size:11px;color:#d8b3ff;border:1px solid #7722cc;font-weight:bold}
+.info b{display:block;color:#fff;font-size:18px;margin-top:4px}#timer{color:#ffe600;text-shadow:0 0 5px #ffe600}
+#question-badge{background:linear-gradient(90deg,#e6007e,#8000ff);padding:6px 20px;border-radius:20px;font-weight:bold;font-size:14px;display:inline-block;margin-bottom:10px;border:1px solid #ff66cc;box-shadow:0 0 10px rgba(230,0,126,.5)}
+#question{font-size:22px;font-weight:bold;line-height:1.4;margin:20px 0;min-height:70px;color:#fff;text-shadow:0 0 10px rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;text-align:center}
+.option{display:flex;align-items:center;gap:15px;background:linear-gradient(180deg,#2b0847,#18032b);border:2px solid #00d9ff;padding:12px 20px;border-radius:40px;margin:12px 0;cursor:pointer;font-size:18px;font-weight:bold;color:#fff;transition:all .2s;box-shadow:0 0 10px rgba(0,217,255,.2);position:relative;overflow:hidden;clip-path:polygon(5% 0%,95% 0%,100% 50%,95% 100%,5% 100%,0% 50%)}
+.option:hover{border-color:#fff;box-shadow:0 0 15px rgba(0,217,255,.6);background:linear-gradient(180deg,#3d0c63,#250542)}
+.option.selected{border-color:#00ff66!important;background:linear-gradient(180deg,#00b347,#006629)!important;box-shadow:0 0 18px rgba(0,255,102,.8)!important}
+.option.correct-reveal{border-color:#00ff66!important;background:linear-gradient(180deg,#00b347,#006629)!important}
+.option.wrong-reveal{border-color:#ff3366!important;background:linear-gradient(180deg,#b3002d,#66001a)!important}
+.option input{display:none}.option-prefix{font-size:20px;color:#fff;width:30px;border-right:1px solid rgba(255,255,255,.2);padding-right:10px;text-align:right}
+.option-text{flex-grow:1;text-align:center;padding-right:30px}
+#progressbar{height:10px;background:#23053d;border-radius:20px;overflow:hidden;margin:15px 0;border:1px solid #661a99}#progressfill{height:100%;width:0;background:linear-gradient(90deg,#00d9ff,#00ff66);box-shadow:0 0 10px #00ff66;transition:width .3s}
+.small{color:#d4b3ff;font-size:14px;line-height:1.6}.result-item{background:#2a0845;padding:14px;margin:12px 0;border-radius:12px;text-align:left;line-height:1.6;border:1px solid #661a99}
+.correct-text{color:#00ff66;font-weight:bold}.wrong-text{color:#ff3366;font-weight:bold}
+</style>
+</head>
+<body>
+<header>
+  <h1>🧮 MATH MASTER</h1>
+  <p>CLASS 7 MATH TEST 2026</p>
+  <span class="sub-edit">(edited with Aryan)</span>
+</header>
+<div class="container">
+<div class="card center" id="home">
+<h2 style="color:#00ffff;text-shadow:0 0 10px #00ffff">Class 7 Mathematics Quiz</h2>
+<p class="small">200+ Question Bank • 25 Random Questions • 20 Minutes<br>CHECK ANSWER to verify, then NEXT QUESTION to proceed.</p>
+<button class="start" onclick="startTest()">START NEW TEST</button>
+</div>
+<div class="card hidden" id="exam">
+<div class="info"><div>TIME LEFT<b id="timer">20:00</b></div><div>QUESTION<b id="number">1/25</b></div><div>SCORE<b id="liveScore">0</b></div></div>
+<div id="progressbar"><div id="progressfill"></div></div>
+<div class="center"><span id="question-badge">Question 1/25</span></div>
+<div id="question"></div><div id="options"></div>
+<p class="small center" id="selectedText">Select an option.</p>
+<button class="check-btn" id="checkBtn" onclick="checkAnswer()" disabled>CHECK ANSWER</button>
+<button class="next" id="nextBtn" onclick="nextQuestion()" disabled>NEXT QUESTION →</button>
+</div>
+<div class="card hidden center" id="result">
+<h2 style="color:#ffe600;text-shadow:0 0 10px #ffe600">🏆 TEST RESULT</h2>
+<h1 id="marks" style="font-size:42px;color:#00ffff;text-shadow:0 0 12px #00ffff">0/100</h1>
+<h3 id="percentage" style="color:#d4b3ff"></h3><p id="summary" class="small"></p><hr style="border-color:#661a99">
+<h3 style="color:#ff3366">❌ Incorrect / Unanswered</h3><div id="mistakes"></div>
+<h3 style="color:#00ff66">✅ Correct Answers</h3><div id="correctList"></div>
+<button class="start" onclick="location.reload()" style="margin-top:15px">START NEW TEST</button>
+</div></div>
+<script>
+// Each question: [question, four options, correct option index, chapter]
+const bank = [];
+function add(q, opts, answer, chapter){bank.push([q,opts,answer,chapter]);}
+
+// 1. Integers
+[
+["Evaluate: (-30) ÷ 6",["-5","5","-6","6"],0],
+["Find: (-8) + 13",["-5","5","21","-21"],1],
+["Find: 17 - (-9)",["8","-8","26","-26"],2],
+["Evaluate: (-7) × 6",["42","-42","-13","13"],1],
+["Evaluate: (-4) × (-5) × (-2)",["40","-40","20","-20"],1],
+["Find: (-48) ÷ (-8)",["-6","6","8","-8"],1],
+["Which is the smallest integer?",["-2","0","-7","3"],2],
+["Find the additive inverse of -19",["-19","0","19","1/19"],2],
+["Evaluate: 25 + (-37)",["12","-12","62","-62"],1],
+["What is (-6)²?",["-36","-12","12","36"],3],
+["Find: (-15) - 8",["-7","7","-23","23"],2],
+["Which integer lies between -4 and -2?",["-1","-3","0","-5"],1],
+["Evaluate: 0 × (-125)",["-125","125","1","0"],3],
+["Find: (-9) + (-11)",["20","-20","2","-2"],1],
+["Evaluate: 72 ÷ (-9)",["8","-8","-9","9"],1]
+].forEach(x=>add(x[0],x[1],x[2],"Integers"));
+
+// 2. Fractions and Decimals
+[
+["Simplify: 2 - 3/5",["7/5","8/5","3/5","1/5"],0],
+["Find: 3/4 + 1/8",["4/12","7/8","1/2","5/8"],1],
+["Find: 5/6 - 1/3",["1/2","2/3","1/3","1/6"],0],
+["Calculate: 2.5 × 0.3",["0.75","7.5","0.075","75"],0],
+["Calculate: 7.2 ÷ 0.6",["1.2","12","0.12","120"],1],
+["Convert 3.5 kg into grams",["350 g","35 g","3500 g","35000 g"],2],
+["Divide 7.9 by 1000",["0.0079","0.079","0.79","0.00079"],0],
+["Find 2/3 of 27",["9","12","18","21"],2],
+["Which is greater?",["0.7","0.07","0.17","0.007"],0],
+["Convert 0.125 into a fraction",["1/4","1/8","1/5","1/10"],1],
+["Find: 4/5 × 15",["10","12","15","20"],1],
+["Find: 3/7 ÷ 6/7",["2","1/2","3/6","6"],1],
+["Express 9/20 as a percentage",["20%","35%","45%","55%"],2],
+["Find: 1.25 + 2.75",["3","3.5","4","4.5"],2],
+["Calculate: 0.48 ÷ 10",["4.8","0.048","0.48","48"],1]
+].forEach(x=>add(x[0],x[1],x[2],"Fractions and Decimals"));
+
+// 3. Data Handling
+[
+["Find the mean of 4, 6, 8",["5","6","7","8"],1],
+["Find the mode of 2, 3, 3, 4, 5",["2","3","4","5"],1],
+["Find the median of 3, 7, 9, 11, 15",["7","9","11","15"],1],
+["How many outcomes are possible when a coin is tossed once?",["1","2","3","4"],1],
+["Probability of getting a head on one fair coin toss?",["0","1","1/2","1/4"],2],
+["A die is rolled. Probability of getting 6?",["1/2","1/3","1/6","1/9"],2],
+["A die is rolled. Probability of getting a number greater than 4?",["1/6","1/3","1/2","2/3"],1],
+["Find the range of 5, 9, 12, 17",["8","10","12","22"],2],
+["What is the total frequency if frequencies are 3, 5 and 7?",["10","12","15","17"],2],
+["Which graph uses bars to compare categories?",["Bar graph","Circle only","Number line","Pictograph only"],0],
+["Probability of an impossible event is",["0","1","1/2","2"],0],
+["Probability of a sure event is",["0","1","1/2","-1"],1],
+["Find the mean of 10, 12, 14, 16",["12","13","14","15"],1]
+].forEach(x=>add(x[0],x[1],x[2],"Data Handling"));
+
+// 4. Simple Equations
+[
+["Solve: 2x + 5 = 15",["3","4","5","6"],2],
+["Solve: 3x - 2 = 7",["2","3","4","5"],1],
+["Solve: x + 9 = 17",["6","7","8","9"],2],
+["Solve: 5x = 45",["8","9","10","11"],1],
+["Solve: x/4 = 6",["10","18","20","24"],3],
+["Solve: 2x - 7 = 13",["8","9","10","11"],2],
+["If x - 12 = 5, find x",["7","15","17","20"],2],
+["Solve: 4x + 1 = 21",["4","5","6","7"],1],
+["The sum of x and 4 is 9. Choose the equation.",["x-4=9","4x=9","x+4=9","x/4=9"],2],
+["Three times a number is 27. The number is",["6","7","8","9"],3],
+["Solve: 7 + y = 19",["10","11","12","13"],2],
+["Solve: 6a = 54",["7","8","9","10"],2],
+["Solve: 2m + 3 = 17",["5","6","7","8"],2]
+].forEach(x=>add(x[0],x[1],x[2],"Simple Equations"));
+
+// 5. Lines and Angles
+[
+["A right angle measures",["45°","90°","180°","360°"],1],
+["A straight angle measures",["90°","120°","180°","360°"],2],
+["Complement of 35° is",["45°","55°","65°","145°"],1],
+["Supplement of 115° is",["55°","65°","75°","85°"],1],
+["Vertically opposite angles are",["Unequal","Equal","Always 90°","Always 180°"],1],
+["If one angle on a straight line is 70°, the other is",["70°","90°","110°","120°"],2],
+["An angle greater than 90° but less than 180° is",["Acute","Right","Obtuse","Reflex"],2],
+["An angle less than 90° is",["Acute","Obtuse","Straight","Reflex"],0],
+["Two angles whose sum is 90° are",["Supplementary","Complementary","Adjacent only","Reflex"],1],
+["Two angles whose sum is 180° are",["Complementary","Supplementary","Vertical","Acute"],1],
+["If two parallel lines are cut by a transversal, corresponding angles are",["Equal","Unequal","Always 90°","Always 180°"],0],
+["A full angle measures",["90°","180°","270°","360°"],3]
+].forEach(x=>add(x[0],x[1],x[2],"Lines and Angles"));
+
+// 6. Triangle and its Properties
+[
+["The sum of the three angles of a triangle is",["90°","180°","270°","360°"],1],
+["A triangle with all sides equal is",["Scalene","Isosceles","Equilateral","Right"],2],
+["A triangle with one 90° angle is",["Acute","Right-angled","Obtuse","Equilateral"],1],
+["Two interior opposite angles are 50° and 60°. Exterior angle is",["100°","110°","120°","130°"],1],
+["Can sides 2 cm, 3 cm and 6 cm form a triangle?",["Yes","No","Only right-angled","Always"],1],
+["The longest side of a right triangle is called",["Base","Height","Hypotenuse","Median"],2],
+["In an isosceles triangle, the angles opposite equal sides are",["Equal","Unequal","90°","180°"],0],
+["How many medians does a triangle have?",["1","2","3","4"],2],
+["An angle of an equilateral triangle is",["45°","60°","90°","120°"],1],
+["The exterior angle of a triangle equals",["Sum of two opposite interior angles","One interior angle","180° always","Half of 90°"],0],
+["A triangle with all angles less than 90° is",["Right","Obtuse","Acute-angled","Straight"],2],
+["Can 4 cm, 5 cm and 8 cm be sides of a triangle?",["Yes","No","Only equilateral","Cannot say"],0]
+].forEach(x=>add(x[0],x[1],x[2],"The Triangle and Its Properties"));
+
+// 7. Congruence
+[
+["Congruent figures have the same",["Shape only","Size only","Shape and size","Colour"],2],
+["SSS stands for",["Side-Side-Side","Side-Side-Sum","Same-Same-Side","Sum-Side-Sum"],0],
+["Which is a triangle congruence rule?",["AAA","SSS","SSA always","Angle sum"],1],
+["If three corresponding sides are equal, triangles are congruent by",["ASA","SAS","SSS","RHS"],2],
+["RHS rule applies to",["Any triangle","Right triangles","Equilateral triangles","Obtuse triangles"],1],
+["If two triangles are congruent, their corresponding angles are",["Equal","Double","Half","Supplementary"],0],
+["The symbol for congruent is",["=","≈","≅","∠"],2],
+["Two squares of side 4 cm are",["Congruent","Only similar","Never equal","Different shape"],0],
+["ASA means",["Angle-Side-Angle","Angle-Sum-Angle","Area-Side-Area","Any-Side-Angle"],0],
+["SAS means",["Side-Angle-Side","Side-Area-Side","Sum-Angle-Sum","Same-Angle-Side"],0]
+].forEach(x=>add(x[0],x[1],x[2],"Congruence of Triangles"));
+
+// 8. Comparing Quantities
+[
+["What is 20% of 400?",["60","70","80","90"],2],
+["Express 3/4 as a percent",["75%","50%","25%","60%"],0],
+["If 50% of a number is 30, the number is",["45","50","60","75"],2],
+["A price rises from ₹100 to ₹120. Increase percent is",["10%","15%","20%","25%"],2],
+["Convert 0.35 into percent",["3.5%","35%","350%","0.35%"],1],
+["Convert 125% into a fraction",["5/4","4/5","1/4","3/4"],0],
+["10% of 250 is",["15","20","25","30"],2],
+["A shirt marked ₹800 has 10% discount. Discount is",["₹40","₹60","₹80","₹100"],2],
+["After 20% discount on ₹500, selling price is",["₹350","₹400","₹420","₹450"],1],
+["A number increases from 40 to 50. Percentage increase is",["20%","25%","30%","40%"],1],
+["Find 5% of 600",["20","25","30","35"],2],
+["A value decreases from 200 to 150. Decrease percent is",["20%","25%","30%","50%"],1],
+["Convert 7/10 into percent",["7%","17%","70%","700%"],2]
+].forEach(x=>add(x[0],x[1],x[2],"Comparing Quantities"));
+
+// 9. Rational Numbers
+[
+["Which is a rational number?",["√2","π","-3/5","√3"],2],
+["The additive inverse of 7/9 is",["7/9","-7/9","9/7","-9/7"],1],
+["The multiplicative inverse of 3/5 is",["3/5","-3/5","5/3","-5/3"],2],
+["Which is greater?",["-1/2","-3/4","They are equal","Cannot compare"],0],
+["The standard form of 6/8 is",["6/8","3/4","2/3","4/3"],1],
+["Find: 1/2 + 1/3",["2/5","5/6","1/6","3/5"],1],
+["Find: -2/7 + 5/7",["-1","3/7","7/7","-3/7"],1],
+["Zero is a",["Positive rational","Negative rational","Rational number","Irrational number"],2],
+["The reciprocal of -4 is",["4","-1/4","1/4","-4"],1],
+["Find: 2/3 × 3/4",["1/2","2/7","5/7","6/7"],0]
+].forEach(x=>add(x[0],x[1],x[2],"Rational Numbers"));
+
+// 10. Practical Geometry
+[
+["An instrument used to draw a circle is",["Ruler","Compass","Protractor","Set square"],1],
+["A protractor is used to measure",["Length","Mass","Angles","Volume"],2],
+["An angle of 60° is constructed using",["Compass and ruler","Only a scale","Only a pencil","Divider only"],0],
+["A line segment has",["No endpoint","One endpoint","Two endpoints","Three endpoints"],2],
+["The perpendicular bisector meets a segment at",["30°","45°","90°","180°"],2],
+["A pair of compasses is mainly used to draw",["Circles and arcs","Only straight lines","Graphs","Tables"],0],
+["A triangle can be uniquely constructed if three sides are known when",["Triangle inequality holds","All sides differ","One side is zero","Angles are all 90°"],0],
+["A 90° angle is called",["Acute","Right","Obtuse","Reflex"],1]
+].forEach(x=>add(x[0],x[1],x[2],"Practical Geometry"));
+
+// 11. Perimeter and Area
+[
+["Perimeter of a square of side 5 cm is",["10 cm","15 cm","20 cm","25 cm"],2],
+["Area of a square of side 6 cm is",["12 cm²","24 cm²","30 cm²","36 cm²"],3],
+["Perimeter of a rectangle 8 cm by 3 cm is",["11 cm","22 cm","24 cm","30 cm"],1],
+["Area of a rectangle 9 cm by 4 cm is",["13 cm²","26 cm²","36 cm²","40 cm²"],2],
+["Area of a triangle with base 10 cm and height 6 cm is",["16 cm²","30 cm²","60 cm²","80 cm²"],1],
+["Circumference of a circle is",["πr²","2πr","πd²","r²"],1],
+["Area of a circle is",["2πr","πr²","πd","4πr"],1],
+["If square perimeter is 36 cm, its side is",["6 cm","8 cm","9 cm","12 cm"],2],
+["Area of a parallelogram is",["Base × height","2 × base","Side × side","Base + height"],0],
+["Perimeter of an equilateral triangle of side 7 cm is",["14 cm","21 cm","28 cm","49 cm"],1],
+["Convert 2 m into cm",["20 cm","200 cm","2000 cm","2 cm"],1],
+["A rectangle has area 48 cm² and length 8 cm. Width is",["4 cm","5 cm","6 cm","8 cm"],2]
+].forEach(x=>add(x[0],x[1],x[2],"Perimeter and Area"));
+
+// 12. Algebraic Expressions
+[
+["In 5x + 3, the coefficient of x is",["3","5","8","x"],1],
+["How many terms are in 2a + 3b - 7?",["1","2","3","4"],2],
+["Simplify: 3x + 2x",["5","5x","6x","x"],1],
+["Simplify: 7a - 4a",["3","3a","11a","-3a"],1],
+["The constant term in 4x + 9 is",["4","x","9","13"],2],
+["Find the value of 2x + 1 when x = 3",["5","6","7","8"],2],
+["Which are like terms?",["2x and 5x","2x and 2y","a and ab","3 and 3x"],0],
+["Simplify: 4p + 3 - p",["3p + 3","5p + 3","3p - 3","4p + 2"],0],
+["The expression for 5 more than y is",["5y","y - 5","y + 5","5 - y"],2],
+["Find 3a - 2 when a = 4",["8","9","10","12"],2]
+].forEach(x=>add(x[0],x[1],x[2],"Algebraic Expressions"));
+
+// 13. Exponents and Powers
+[
+["Value of 2³ is",["6","8","9","12"],1],
+["In 5⁴, the base is",["4","5","20","625"],1],
+["In 3⁵, the exponent is",["3","5","8","15"],1],
+["Value of 10² is",["20","100","1000","10"],1],
+["Which equals 4 × 4 × 4?",["4²","3⁴","4³","4 × 3"],2],
+["Value of 1⁹ is",["0","1","9","10"],1],
+["Value of 7⁰ is",["0","1","7","70"],1],
+["Write 1000 as a power of 10",["10²","10³","10⁴","10⁵"],1],
+["Simplify: 2² × 2³",["2⁵","2⁶","2¹","4⁵"],0],
+["Value of 3² + 2² is",["12","13","14","25"],1]
+].forEach(x=>add(x[0],x[1],x[2],"Exponents and Powers"));
+
+// 14. Symmetry
+[
+["A square has how many lines of symmetry?",["2","3","4","6"],2],
+["A rectangle (not a square) has how many lines of symmetry?",["1","2","3","4"],1],
+["An equilateral triangle has how many lines of symmetry?",["1","2","3","4"],2],
+["A circle has",["No line of symmetry","1 line","2 lines","Infinitely many lines"],3],
+["The order of rotational symmetry of a square is",["1","2","3","4"],3],
+["A figure that matches itself after a half-turn has rotational symmetry of order at least",["1","2","3","4"],1],
+["Which letter has vertical line symmetry?",["A","F","G","R"],0],
+["A regular hexagon has how many lines of symmetry?",["3","4","5","6"],3]
+].forEach(x=>add(x[0],x[1],x[2],"Symmetry"));
+
+// 15. Visualising Solid Shapes
+[
+["A cube has how many faces?",["4","6","8","12"],1],
+["A cuboid has how many vertices?",["6","8","10","12"],1],
+["A cylinder has how many circular faces?",["0","1","2","3"],2],
+["A cone has how many vertices?",["0","1","2","3"],1],
+["A sphere has how many edges?",["0","1","2","3"],0],
+["A cube has how many edges?",["6","8","10","12"],3],
+["Which solid has one curved surface and two flat circular faces?",["Cone","Sphere","Cylinder","Cube"],2],
+["A net of a cube is made of how many squares?",["4","5","6","8"],2]
+].forEach(x=>add(x[0],x[1],x[2],"Visualising Solid Shapes"));
+
+// Extra mixed questions to take the bank beyond 200
+[
+["A toy bought for ₹150 is sold for ₹180. Profit is",["₹20","₹30","₹40","₹50"],1,"Profit and Loss"],
+["A ₹500 article is sold at 10% loss. Selling price is",["₹400","₹450","₹475","₹490"],1,"Profit and Loss"],
+["A cycle bought for ₹1200 is sold for ₹1500. Profit is",["₹200","₹300","₹400","₹250"],1,"Profit and Loss"],
+["Find the LCM of 12 and 16",["32","48","64","24"],1,"LCM and HCF"],
+["Find the HCF of 24 and 36",["6","8","12","18"],2,"LCM and HCF"],
+["LCM is 60, HCF is 5, and one number is 20. Other number is",["10","15","25","30"],3,"LCM and HCF"],
+["The ratio 12:18 in simplest form is",["2:3","3:2","4:5","6:9"],0,"Ratio"],
+["Divide ₹60 in the ratio 2:3. The smaller share is",["₹20","₹24","₹30","₹36"],1,"Ratio"],
+["If 4 notebooks cost ₹80, cost of 7 notebooks is",["₹120","₹130","₹140","₹160"],2,"Unitary Method"],
+["A car travels 120 km in 3 hours. Average speed is",["30 km/h","40 km/h","50 km/h","60 km/h"],1,"Speed"],
+["Find the perimeter of a regular pentagon of side 6 cm",["24 cm","30 cm","36 cm","42 cm"],1,"Perimeter and Area"],
+["A bag has 3 red and 2 blue balls. Probability of blue is",["2/5","3/5","1/2","1/5"],0,"Probability"],
+["Find the median of 2, 4, 6, 8",["4","5","6","8"],1,"Data Handling"],
+["Find the mode of 4, 4, 5, 6, 6, 6, 7",["4","5","6","7"],2,"Data Handling"],
+["If 8 pens cost ₹56, one pen costs",["₹6","₹7","₹8","₹9"],1,"Unitary Method"],
+["Find: (-12) × 0",["-12","12","1","0"],3,"Integers"],
+["Find: 5/8 + 1/8",["1/2","3/4","1","6/8"],1,"Fractions and Decimals"],
+["Find: 9.6 - 3.85",["5.65","5.75","6.75","6.85"],1,"Fractions and Decimals"],
+["An angle of 145° is",["Acute","Right","Obtuse","Straight"],2,"Lines and Angles"],
+["If two angles are complementary and one is 28°, the other is",["52°","62°","72°","152°"],1,"Lines and Angles"],
+["The sum of angles in a quadrilateral is",["180°","270°","360°","540°"],2,"Lines and Angles"],
+["A triangle has angles 40° and 65°. Third angle is",["65°","70°","75°","85°"],2,"Triangles"],
+["A triangle with sides 5, 5, 8 is",["Equilateral","Isosceles","Scalene","Right"],1,"Triangles"],
+["If x=5, value of x² is",["10","15","20","25"],3,"Algebraic Expressions"],
+["Simplify: 8m + 2m - 3m",["7m","9m","10m","13m"],0,"Algebraic Expressions"],
+["Value of 5³ is",["15","25","75","125"],3,"Exponents and Powers"],
+["Which is the smallest: 1/2, 2/3, 3/4, 1/4?",["1/2","2/3","3/4","1/4"],3,"Rational Numbers"],
+["A cuboid has how many faces?",["4","6","8","12"],1,"Visualising Solid Shapes"],
+["A triangular prism has how many rectangular side faces?",["2","3","4","5"],1,"Visualising Solid Shapes"],
+["A 25% discount on ₹400 is",["₹50","₹75","₹100","₹125"],2,"Comparing Quantities"],
+["What is 15% of 200?",["20","25","30","35"],2,"Comparing Quantities"]
+].forEach(x=>add(x[0],x[1],x[2],x[3]));
+
+let questions=[],answers=[],checkedStatus=[],index=0,seconds=1200,clock=null,finished=false;
+const TOTAL_QUESTIONS=25;
+function shuffleOptions(question){
+ const pairs=question[1].map((text,i)=>({text,correct:i===question[2]}));
+ for(let i=pairs.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pairs[i],pairs[j]]=[pairs[j],pairs[i]];}
+ return [question[0],pairs.map(p=>p.text),pairs.findIndex(p=>p.correct),question[3]];
+}
+function startTest(){
+ document.getElementById("home").classList.add("hidden");document.getElementById("exam").classList.remove("hidden");
+ questions=bank.slice().sort(()=>Math.random()-.5).slice(0,TOTAL_QUESTIONS).map(shuffleOptions);
+ answers=Array(TOTAL_QUESTIONS).fill(null);checkedStatus=Array(TOTAL_QUESTIONS).fill(false);index=0;seconds=1200;finished=false;
+ showQuestion();updateTimer();if(clock)clearInterval(clock);
+ clock=setInterval(()=>{seconds--;updateTimer();if(seconds<=0)finishTest(true);},1000);
+}
+function updateTimer(){let m=Math.floor(seconds/60),s=seconds%60;document.getElementById("timer").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");}
+function calculateScore(){let score=0;answers.forEach((a,i)=>{if(a===null||!checkedStatus[i])return;score+=a===questions[i][2]?4:-1;});return score;}
+function showQuestion(){
+ const q=questions[index],totalQ=questions.length;
+ document.getElementById("number").textContent=(index+1)+"/"+totalQ;
+ document.getElementById("question-badge").textContent="Question "+(index+1)+"/"+totalQ+" ("+q[3]+")";
+ document.getElementById("question").textContent=q[0];
+ document.getElementById("progressfill").style.width=((index+1)/totalQ*100)+"%";
+ const box=document.getElementById("options");box.innerHTML="";
+ q[1].forEach((option,i)=>{
+  const label=document.createElement("label");label.className="option";
+  if(answers[index]===i)label.classList.add("selected");
+  const radio=document.createElement("input");radio.type="radio";radio.name="answer";radio.value=i;radio.checked=answers[index]===i;
+  if(checkedStatus[index]){radio.disabled=true;if(i===q[2])label.classList.add("correct-reveal");else if(answers[index]===i)label.classList.add("wrong-reveal");}
+  else{radio.onchange=()=>{answers[index]=i;document.querySelectorAll(".option").forEach(l=>l.classList.remove("selected"));label.classList.add("selected");document.getElementById("checkBtn").disabled=false;document.getElementById("selectedText").textContent="Option "+String.fromCharCode(65+i)+" selected.";};}
+  const prefix=document.createElement("span");prefix.className="option-prefix";prefix.textContent=String.fromCharCode(65+i)+":";
+  const text=document.createElement("span");text.className="option-text";text.textContent=option;
+  label.append(radio,prefix,text);box.appendChild(label);
+ });
+ const checkBtn=document.getElementById("checkBtn"),nextBtn=document.getElementById("nextBtn");
+ nextBtn.disabled=false;nextBtn.textContent=index===totalQ-1?"SUBMIT TEST":"NEXT QUESTION →";
+ if(checkedStatus[index]){checkBtn.disabled=true;checkBtn.style.opacity=".6";document.getElementById("selectedText").textContent=answers[index]===q[2]?"✅ Correct Answer!":"❌ Incorrect Answer!";}
+ else{checkBtn.disabled=answers[index]===null;checkBtn.style.opacity="1";document.getElementById("selectedText").textContent=answers[index]===null?"Select an option.":"Option "+String.fromCharCode(65+answers[index])+" selected";}
+ document.getElementById("liveScore").textContent=calculateScore();
+}
+function checkAnswer(){if(answers[index]===null||checkedStatus[index])return;checkedStatus[index]=true;showQuestion();}
+function nextQuestion(){if(finished)return;if(index===questions.length-1)finishTest(false);else{index++;showQuestion();}}
+function finishTest(timeUp){
+ if(finished)return;finished=true;clearInterval(clock);document.getElementById("exam").classList.add("hidden");document.getElementById("result").classList.remove("hidden");
+ let correct=0,wrong=0,unanswered=0;const mistakeBox=document.getElementById("mistakes"),correctBox=document.getElementById("correctList");mistakeBox.innerHTML="";correctBox.innerHTML="";
+ questions.forEach((q,i)=>{const a=answers[i],right=q[2];if(a===null||!checkedStatus[i]){unanswered++;const d=document.createElement("div");d.className="result-item";d.innerHTML="<b>Q"+(i+1)+".</b> "+q[0]+'<br><span class="wrong-text">Unanswered / not checked</span><br><span class="correct-text">Correct answer: '+String.fromCharCode(65+right)+": "+q[1][right]+"</span>";mistakeBox.appendChild(d);return;}
+  if(a===right){correct++;const d=document.createElement("div");d.className="result-item";d.innerHTML="<b>Q"+(i+1)+".</b> "+q[0]+'<br><span class="correct-text">Your answer: '+String.fromCharCode(65+a)+": "+q[1][a]+" ✓</span>";correctBox.appendChild(d);}
+  else{wrong++;const d=document.createElement("div");d.className="result-item";d.innerHTML="<b>Q"+(i+1)+".</b> "+q[0]+'<br><span class="wrong-text">Your answer: '+String.fromCharCode(65+a)+": "+q[1][a]+"</span>"+'<br><span class="correct-text">Correct answer: '+String.fromCharCode(65+right)+": "+q[1][right]+"</span>";mistakeBox.appendChild(d);}
+ });
+ const score=correct*4-wrong,accuracy=Math.round(correct/TOTAL_QUESTIONS*100);
+ document.getElementById("marks").textContent=score+"/100";document.getElementById("percentage").textContent="Accuracy: "+accuracy+"%";
+ document.getElementById("summary").innerHTML="✅ Correct: "+correct+"<br>❌ Wrong: "+wrong+"<br>⭕ Unanswered: "+unanswered+"<br>⏱️ "+(timeUp?"Time finished":"Test submitted")+"<br><br>"+(accuracy>=80?"Excellent performance! 🏆":accuracy>=50?"Good work! Keep practising!":"Keep practising and improve your score!");
+ if(wrong===0&&unanswered===0)mistakeBox.textContent="No incorrect answers!";if(correct===0)correctBox.textContent="No correct answers.";
+}
+window.addEventListener("beforeunload",e=>{if(!finished&&!document.getElementById("exam").classList.contains("hidden")){e.preventDefault();e.returnValue="";}});
+</script></body></html>
